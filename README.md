@@ -17,6 +17,6 @@ Just generates a WAVE-file header, with the specified length as argument.
     , bitDepth   : 8
     })); 
 
-@karlwestin adapted this module from @tooTallNate's node-wav/lib/writer.js -
-in which there appears to be an incompatibility with the stream-parser package.
-Independently, neither of us have been able to figure out what's going sideways with that.
+No one has published a solution to [Issue 1](https://github.com/TooTallNate/node-wav/issues/1) in which
+the Writer constructor goes sideways,
+so [@karlwestin](https://github.com/karlwestin) adapted this module from @tooTallNate's node-wav/lib/writer.js -
