@@ -20,12 +20,14 @@ module.exports = function generateHeader(length, options) {
 
   var MAX_WAV = 4294967295 - 100;
   var endianness = 'LE';
-  var format = 1; // raw PCM
+  var format = options.format || 1; // raw PCM
   var channels = options.channels || 1;
   var sampleRate = options.sampleRate || 44100;
   var bitDepth = options.bitDepth || 16;
+  if (format === 3) bitDepth = 32;
 
-  var headerLength = 44; 
+  var headerLength = 44 + 2; 
+  if (format === 3) headerLength += 2;
   var dataLength = length || MAX_WAV;
   var fileSize = dataLength + headerLength;
   var header = new Buffer(headerLength);
@@ -36,7 +38,7 @@ module.exports = function generateHeader(length, options) {
   offset += RIFF.length;
 
   // write the file size minus the identifier and this 32-bit int
-  console.log("Writing filesize: %d", fileSize);
+  //  console.log("Writing filesize: %d", fileSize);
   header['writeUInt32' + endianness](fileSize - 8, offset);
   offset += 4;
 
@@ -51,7 +53,7 @@ module.exports = function generateHeader(length, options) {
   // write the size of the "fmt " chunk
   // XXX: value of 16 is hard-coded for raw PCM format. other formats have
   // different size.
-  header['writeUInt32' + endianness](16, offset);
+  header['writeUInt32' + endianness]((format === 3) ? 18 : 16, offset);
   offset += 4;
 
   // write the audio format code
@@ -79,6 +81,12 @@ module.exports = function generateHeader(length, options) {
   // write the bits per sample
   header['writeUInt16' + endianness](bitDepth, offset);
   offset += 2;
+
+  if (format === 3) {
+    // write the extension length
+    header['writeUInt16' + endianness](0, offset);
+    offset += 2;
+  }
 
   // write the "data" sub-chunk ID
   data.copy(header, offset);
