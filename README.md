@@ -19,4 +19,5 @@ Just generates a WAVE-file header, with the specified length as argument.
 
 No one has published a solution to [Issue 1](https://github.com/TooTallNate/node-wav/issues/1) in which
 the Writer constructor goes sideways,
-so [@karlwestin](https://github.com/karlwestin) adapted this module from @tooTallNate's node-wav/lib/writer.js -
+so [@karlwestin](https://github.com/karlwestin) adapted this module from @tooTallNate's
+[node-wav/lib/writer.js](https://github.com/TooTallNate/node-wav/blob/master/lib/writer.js)
