@@ -26,7 +26,7 @@ module.exports = function generateHeader(length, options) {
   var bitDepth = options.bitDepth || 16;
   if (format === 3) bitDepth = 32;
 
-  var headerLength = 44 + 2; 
+  var headerLength = 44; 
   if (format === 3) headerLength += 2;
   var dataLength = length || MAX_WAV;
   var fileSize = dataLength + headerLength;
@@ -38,7 +38,7 @@ module.exports = function generateHeader(length, options) {
   offset += RIFF.length;
 
   // write the file size minus the identifier and this 32-bit int
-  //  console.log("Writing filesize: %d", fileSize);
+  // console.log("Writing filesize: %d", fileSize);
   header['writeUInt32' + endianness](fileSize - 8, offset);
   offset += 4;
 
