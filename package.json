@@ -6,6 +6,10 @@
     "type": "git",
     "url": "https://github.com/liaotup/node-waveheader.git"
   },
+  "description": "Streams audio data as binary data via binaryjs connection",
+  "keywords": [ "audio", "dsp", "processing", "sound", "streaming", "signal" ],
+  "licenses": [ { "type": "MIT", "url": "http://raw.github.com/ZECTBynmo/AudioStreamer/master/LICENSE" } ],
+  "engines": { "node": ">=0.8.0" },
   "main": "./index.js",
   "dependencies": {
     "debug": "~0.7.2"
