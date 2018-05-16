@@ -11,8 +11,5 @@
   "licenses": [ { "type": "MIT", "url": "http://raw.github.com/ZECTBynmo/AudioStreamer/master/LICENSE" } ],
   "engines": { "node": ">=0.8.0" },
   "main": "./index.js",
-  "dependencies": {
-    "debug": "~0.7.2"
-  },
   "version": "0.0.2"
 }
