@@ -1,5 +1,4 @@
 
-var debug = require('debug')('waveheader');
 
 /*
  * WaveHeader
@@ -39,7 +38,7 @@ module.exports = function generateHeader(length, options) {
   offset += RIFF.length;
 
   // write the file size minus the identifier and this 32-bit int
-  debug("Writing filesize: %d", fileSize);
+  
   header['writeUInt32' + endianness](fileSize - 8, offset);
   offset += 4;
 
